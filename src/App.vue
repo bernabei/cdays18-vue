@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
+      <img src="./assets/cdays.png">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
@@ -18,6 +19,7 @@
 }
 #nav {
   padding: 30px;
+  background-color: gainsboro;
 }
 
 #nav a {
@@ -27,5 +29,12 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+#nav img {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 300px;
 }
 </style>
