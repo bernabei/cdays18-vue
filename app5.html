@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello Vue app</title>
+  <script src="vue.js"></script>
+</head>
+<body>
+  <div id="app-5">
+    <ol>
+      <todo-item v-for="todo in todos" v-if="showAll || !todo.done"
+        v-bind:todo="todo"
+        v-bind:key="todo.id">
+      </todo-item>
+    </ol>
+    <input type="checkbox" v-model="showAll">Show all</input>
+    <div>
+      <input v-model="newTodo">
+      <button v-on:click="addTodo" v-bind:disabled="!newTodoValid">Add todo</button>
+    </div>
+  </div>
+
+  <script>
+    Vue.component('todo-item', {
+      props: ['todo'],
+      template: `
+        <li v-on:click="todo.done = !todo.done" v-bind:style="{ textDecoration: todo.done ? 'line-through' : 'none' }">
+          {{ todo.text }}
+        </li>`
+    })
+
+    var app5 = new Vue({
+      el: '#app-5',
+      data: {
+        todos: [
+          { id: 0, text: 'Learn JavaScript', done: false },
+          { id: 1, text: 'Learn Vue', done: false },
+          { id: 2, text: 'Build something awesome', done: false }
+        ],
+        newTodo: '',
+        showAll: true
+      },
+      computed: {
+        newTodoValid: function () {
+          return this.newTodo && this.newTodo.length > 0;
+        }
+      },
+      methods: {
+        addTodo: function () {
+          if(this.newTodoValid) {
+            this.todos.push({ id: this.newTodo.length, text: this.newTodo, done: false });
+            this.newTodo = null;
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello Vue app</title>
+  <script src="vue.js"></script>
+</head>
+<body>
+  <div id="app-3">
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+    <div>
+      <input v-model="newTodo">
+      <button v-on:click="addTodo">Add todo</button>
+    </div>
+  </div>
+
+  <script>
+    var app3 = new Vue({
+      el: '#app-3',
+      data: {
+        todos: [
+          { text: 'Learn JavaScript' },
+          { text: 'Learn Vue' },
+          { text: 'Build something awesome' }
+        ],
+        newTodo: ''
+      },
+      methods: {
+        addTodo: function () {
+          if(this.newTodo.length > 0) {
+            this.todos.push({ text: this.newTodo });
+            this.newTodo = "";
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

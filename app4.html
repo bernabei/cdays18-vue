@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello Vue app</title>
+  <script src="vue.js"></script>
+</head>
+<body>
+  <div id="app-4">
+    <ol>
+      <li v-for="todo in todos" v-on:click="todo.done = !todo.done" v-if="showAll || !todo.done" v-bind:style="{ textDecoration: todo.done ? 'line-through' : 'none' }" >
+        {{ todo.text }}
+      </li>
+    </ol>
+    <input type="checkbox" v-model="showAll">Show all</input>
+    <div>
+      <input v-model="newTodo">
+      <button v-on:click="addTodo" v-bind:disabled="!newTodoValid">Add todo</button>
+    </div>
+  </div>
+
+  <script>
+    var app4 = new Vue({
+      el: '#app-4',
+      data: {
+        todos: [
+          { text: 'Learn JavaScript', done: false },
+          { text: 'Learn Vue', done: false },
+          { text: 'Build something awesome', done: false }
+        ],
+        newTodo: '',
+        showAll: true
+      },
+      computed: {
+        newTodoValid: function () {
+          return this.newTodo && this.newTodo.length > 0;
+        }
+      },
+      methods: {
+        addTodo: function () {
+          if(this.newTodo.length > 0) {
+            this.todos.push({ text: this.newTodo, done: false });
+            this.newTodo = "";
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
