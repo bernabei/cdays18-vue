@@ -51,6 +51,9 @@
             this.newTodo = null;
           }
         }
+      },
+      mounted: function() {
+        this.todos.push({ id: this.newTodo.length, text: "Learn Vue instance lifecycle hooks", done: false });
       }
     })
   </script>
