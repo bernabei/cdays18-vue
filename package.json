@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "buefy": "^0.6.3",
+    "axios": "^0.18.0",
     "vue": "^2.5.16",
+    "vue-axios": "^2.1.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

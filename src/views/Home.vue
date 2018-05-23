@@ -1,18 +1,28 @@
 <template>
   <div class="home">
     <img src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <QuizList :list="list"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import QuizList from '@/components/QuizList.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    QuizList
+  },
+  data () {
+    return {
+      list: null
+    }
+  },
+  mounted () {
+    this.$http
+      .get('quiz_list.json')
+      .then(response => (this.list = response.data))
   }
 }
 </script>
