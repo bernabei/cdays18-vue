@@ -29,6 +29,7 @@
 
 <script>
 import Question from '@/components/Question.vue'
+import { mapState } from 'vuex'
 
   export default {
     components: {
@@ -36,34 +37,22 @@ import Question from '@/components/Question.vue'
     },
     data() {
         return {
-            quizId: null,
-            quizIntro:false,
-            quizQuestions:false,
-            quizResults:false,
-            title:'',
-            questions:[],
             currentQuestion:0,
             answers:[],
             correct:0,
             perc:null
       };
     },
+    computed: mapState([
+        // map this.quizIntro to store.state.quizIntro...
+        'quizIntro', 'quizQuestions', 'quizResults', 'title', 'questions'
+    ]),
     created: function() {
-        this.quizId = this.$route.params.quizId;
-
-        this.$http
-            .get(this.quizId)
-            .then(response => {
-                this.title = response.data.title;
-                this.questions = response.data.questions;
-                this.quizIntro = true;
-            })
-            .catch(error=>{console.log(error)})
+        this.$store.dispatch('loadQuiz', this.$route.params.quizId)
     },
     methods: {
         startQuiz() {
-            this.quizIntro = false;
-            this.quizQuestions = true;
+            this.$store.commit('setStep', 1);
             console.log('test'+JSON.stringify(this.questions[this.currentQuestion]));
         },
         handleAnswer(e) {
@@ -71,8 +60,7 @@ import Question from '@/components/Question.vue'
             this.answers[this.currentQuestion]=e.answer;
             if((this.currentQuestion+1) === this.questions.length) {
                 this.handleResults();
-                this.quizQuestions = false;
-                this.quizResults = true;
+                this.$store.commit('setStep', 2);
             } else {
                 this.currentQuestion++;
             }
