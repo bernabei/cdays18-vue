@@ -47,6 +47,23 @@ import { mapState } from 'vuex'
         // map this.quizIntro to store.state.quizIntro...
         'quizIntro', 'quizQuestions', 'quizResults', 'title', 'questions'
     ]),
+    // computed: {
+    //     count () {
+    //     return store.state.count
+    //     }
+    // }
+    // computed: mapState({
+    //     // arrow functions can make the code very succinct!
+    //     count: state => state.count,
+
+    //     // passing the string value 'count' is same as `state => state.count`
+    //     countAlias: 'count',
+
+    //     // to access local state with `this`, a normal function must be used
+    //     countPlusLocalState (state) {
+    //     return state.count + this.localCount
+    //     }
+    // })
     created: function() {
         this.$store.dispatch('loadQuiz', this.$route.params.quizId)
     },
