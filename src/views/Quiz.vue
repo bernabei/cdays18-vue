@@ -35,17 +35,10 @@ import { mapState } from 'vuex'
     components: {
         Question
     },
-    data() {
-        return {
-            currentQuestion:0,
-            answers:[],
-            correct:0,
-            perc:null
-      };
-    },
     computed: mapState([
         // map this.quizIntro to store.state.quizIntro...
-        'quizIntro', 'quizQuestions', 'quizResults', 'title', 'questions'
+        'quizIntro', 'quizQuestions', 'quizResults', 'title', 'questions',
+        'currentQuestion', 'answers', 'correct', 'perc'
     ]),
     // computed: {
     //     count () {
@@ -74,21 +67,7 @@ import { mapState } from 'vuex'
         },
         handleAnswer(e) {
             console.log('answer event ftw',e);
-            this.answers[this.currentQuestion]=e.answer;
-            if((this.currentQuestion+1) === this.questions.length) {
-                this.handleResults();
-                this.$store.commit('setStep', 2);
-            } else {
-                this.currentQuestion++;
-            }
-        },
-        handleResults() {
-            console.log('handle results');
-            this.questions.forEach((a, index) => {
-                if(this.answers[index] === a.answer) this.correct++;        
-            });
-            this.perc = ((this.correct / this.questions.length)*100).toFixed(2);
-            console.log(this.correct+' '+this.perc);
+            this.$store.commit('setAnswer', e.answer);
         }
     }
   };
