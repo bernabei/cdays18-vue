@@ -1,0 +1,12 @@
+[
+    {
+        "id": "quiz1.json",
+        "desc": "Food quiz",
+        "num_questions": 1
+    },
+    {
+        "id": "quiz2.json",
+        "desc": "Drink quiz",
+        "num_questions": 2
+    }
+]

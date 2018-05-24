@@ -1,0 +1,36 @@
+{
+    "title": "Quiz about food",
+    "questions": [
+      {
+        "text": "Il cibo è buono?",
+        "type": "tf",
+        "answer": "t"
+      },
+      {
+        "text": "Il cibo è cattivo?",
+        "type": "tf",
+        "answer": "f"
+      },
+      {
+        "text": "QUante volte al giorno bisogna mangiare?",
+        "type": "mc",
+        "answers": [
+          "Nessuna",
+          "Una volta al giorno",
+          "Almeno due volte al giorno",
+          "Chi più ne ha più ne metta"
+        ],
+        "answer": "Chi più ne ha più ne metta"
+      },
+      {
+        "text": "Qual'è il modo migliore per consumare un pasto?",
+        "type": "mc",
+        "answers": [
+          "Con le mani",
+          "Indifferente... L'importante è mangiare",
+          "La cena dei Community Days"
+        ],
+        "answer": "La cena dei Community Days"
+      }
+    ]
+  }
