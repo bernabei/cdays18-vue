@@ -23,6 +23,7 @@ export default {
     this.$http
       .get('quiz_list.json')
       .then(response => (this.list = response.data))
+      .catch(error=>{console.log(error)})
   }
 }
 </script>

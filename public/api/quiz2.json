@@ -1,0 +1,28 @@
+{
+    "title": "Quiz about drink",
+    "questions": [
+      {
+        "text": "Bisogna bere molta acqua durante la giornata?",
+        "type": "tf",
+        "answer": "t"
+      },
+      {
+        "text": "Fa bene bere un buon bicchiere di vino?",
+        "type": "tf",
+        "answer": "t"
+      },
+      {
+        "text": "Qual'è la bevanda principale del programmatore?",
+        "type": "mc",
+        "answers": [
+          "Acqua",
+          "Vino",
+          "Caffè",
+          "Birra",
+          "Energy drink",
+          "Coca Cola Zero"
+        ],
+        "answer": "Caffè"
+      }
+    ]
+  }

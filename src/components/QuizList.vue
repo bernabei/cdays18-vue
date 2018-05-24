@@ -5,9 +5,6 @@
       <h1 class="title">
         Lista Quiz
       </h1>
-      <h2 class="subtitle">
-        Hero subtitle
-      </h2>
     </div>
     <div style="padding: 10px" v-for="item in list" :key="item.id">
         <button class="button is-primary is-medium"
